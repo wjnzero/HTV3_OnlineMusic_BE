@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SongRepository extends PagingAndSortingRepository<Song,Long> {
+    Iterable<Song> findSongByName(String name);
 }
