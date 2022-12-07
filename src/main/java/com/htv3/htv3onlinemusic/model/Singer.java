@@ -16,9 +16,4 @@ public class Singer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-
-    @OneToOne
-    @JoinColumn(name = "song_id")
-    private Song song  ;
-
 }
