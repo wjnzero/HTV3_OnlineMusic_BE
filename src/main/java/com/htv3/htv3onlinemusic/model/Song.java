@@ -3,7 +3,6 @@ package com.htv3.htv3onlinemusic.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 import java.util.Set;
 
@@ -37,7 +36,4 @@ public class Song {
 
     private String album;
     private String view;
-
-
-
 }
