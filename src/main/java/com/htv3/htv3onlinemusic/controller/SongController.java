@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("song")
+@RequestMapping("songs")
 public class SongController {
     @Autowired
     private ISongService songService;
