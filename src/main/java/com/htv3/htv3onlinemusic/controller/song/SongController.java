@@ -1,4 +1,4 @@
-package com.htv3.htv3onlinemusic.controller;
+package com.htv3.htv3onlinemusic.controller.song;
 
 import com.htv3.htv3onlinemusic.model.Song;
 import com.htv3.htv3onlinemusic.service.song.ISongService;
