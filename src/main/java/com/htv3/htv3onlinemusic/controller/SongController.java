@@ -7,11 +7,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-<<<<<<< HEAD
-=======
 
 import java.util.Optional;
->>>>>>> ea86d697f94467081d87301b06dc39990feb227f
 
 @RestController
 @CrossOrigin("*")
@@ -27,12 +24,6 @@ public class SongController {
         Iterable<Song> songs = songService.findAll();
         return new ResponseEntity<>(songs, HttpStatus.OK);
     }
-<<<<<<< HEAD
-    @GetMapping("/search")
-    public ResponseEntity<Iterable<Song>> findSongByName(@RequestParam String name) {
-        Iterable<Song> songs = songService.findSongByName(name);
-        return new ResponseEntity<>(songs, HttpStatus.OK);
-=======
     @PostMapping("/create")
     public ResponseEntity<Song> createSong(@RequestBody Song song){
         songService.save(song);
@@ -64,6 +55,10 @@ public class SongController {
         }
         songService.remove(id);
         return new ResponseEntity<>(song.get(), HttpStatus.OK);
->>>>>>> ea86d697f94467081d87301b06dc39990feb227f
+    }
+    @GetMapping("/find")
+    public ResponseEntity<Iterable<Song>> findSongByName(@RequestParam String name) {
+        Iterable<Song> songs = songService.findSongByName(name);
+        return new ResponseEntity<>(songs, HttpStatus.OK);
     }
 }
