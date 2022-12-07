@@ -35,12 +35,9 @@ public class Song {
     @JoinColumn(name = "type_id")
     private Set<SongType> songTypeSet;
 
-    @ManyToMany
-    @JoinTable(name = "album_song", joinColumns = {@JoinColumn(name = "album_id")},
-            inverseJoinColumns = {@JoinColumn(name = "song_id")})
-    private Set<Album> albumSet;
-    @OneToOne
-    @JoinColumn(name = "social_id")
-    private Social social;
+    private String album;
+    private String view;
+
+
 
 }
