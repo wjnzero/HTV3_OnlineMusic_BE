@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("song")
+@RequestMapping("songs")
 public class SongController {
     @Autowired
     private ISongService songService;
