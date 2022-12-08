@@ -12,13 +12,11 @@ import java.util.Optional;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("songs")
+@RequestMapping("/songs")
 public class SongController {
     @Autowired
     private ISongService songService;
 
-    @Value("${upload.path}")
-    private String fileUpload;
     @GetMapping("/")
     public ResponseEntity<Iterable<Song>> findAllSong(){
         Iterable<Song> songs = songService.findAll();

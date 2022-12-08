@@ -16,7 +16,5 @@ public class SongType {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    @OneToOne
-    @JoinColumn(name = "song_id")
-    private Song song  ;
+
 }

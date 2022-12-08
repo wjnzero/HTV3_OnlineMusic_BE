@@ -32,9 +32,18 @@ public class Song {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToMany
-    @JoinColumn(name = "type_id")
+    @OneToMany
+    @JoinColumn(name = "song_id")
     private Set<SongType> songTypeSet;
+
+    @ManyToOne
+    @JoinColumn(name = "playlist_id")
+    private PlayList playListSet;
+//
+//    @ManyToMany(fetch = FetchType.EAGER)
+//    @JoinTable(name = "playlist_song", joinColumns = {@JoinColumn(name = "playlist_id")},
+//            inverseJoinColumns = {@JoinColumn(name = "song_id")})
+//    private Set<PlayList> playListSet;
 
     private String album;
     private String view;
