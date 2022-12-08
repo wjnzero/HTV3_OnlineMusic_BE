@@ -1,5 +1,6 @@
 package com.htv3.htv3onlinemusic.controller.userprofile;
 
+import com.htv3.htv3onlinemusic.model.Song;
 import com.htv3.htv3onlinemusic.model.User;
 import com.htv3.htv3onlinemusic.service.user.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,12 @@ import java.util.Optional;
 public class UserController {
     @Autowired
     private IUserService userService;
+
+//    @GetMapping("/")
+//    public ResponseEntity<Iterable<User>> findProfileUser(){
+//        Iterable<User> users = userService.findAll();
+//        return new ResponseEntity<>(users, HttpStatus.OK);
+//    }
 
     @PutMapping("/edit/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user){

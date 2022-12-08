@@ -28,7 +28,9 @@ public class Song {
     @JoinColumn(name = "singer_id")
     private Set<Singer> singer;
 
-    private String nameCreate;
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @ManyToMany
     @JoinColumn(name = "type_id")
