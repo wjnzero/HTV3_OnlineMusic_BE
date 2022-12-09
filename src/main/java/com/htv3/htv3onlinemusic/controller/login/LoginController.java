@@ -49,7 +49,7 @@ public class LoginController {
             return new ResponseEntity<>(jwtResponse, HttpStatus.ACCEPTED);
         } catch (Exception e) {
             System.out.println("Loi khi dang nhap");
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         }
     }
 

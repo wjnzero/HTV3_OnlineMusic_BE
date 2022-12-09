@@ -12,7 +12,7 @@ public class LoginForm {
     private String username;
 
     @NotNull
-    @Size(min = 6, max = 28)
+    @Size(min = 6, max = 8)
     private String password;
 
     public LoginForm(String username, String password) {
