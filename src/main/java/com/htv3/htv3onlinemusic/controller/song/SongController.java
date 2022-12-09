@@ -61,9 +61,9 @@ public class SongController {
         songService.remove(id);
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
-    @GetMapping("/find")
+    @GetMapping("/search")
     public ResponseEntity<Iterable<Song>> findSongByName(@RequestParam String name) {
-        Iterable<Song> songs = songService.findSongByName(name);
+        Iterable<Song> songs = songService.findByNameContaining(name);
         return new ResponseEntity<>(songs, HttpStatus.OK);
     }
 }
