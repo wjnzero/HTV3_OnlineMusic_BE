@@ -32,10 +32,6 @@ public class Song {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany
-    @JoinColumn(name = "song_id")
-    private Set<SongType> songTypeSet;
-
     @ManyToOne
     @JoinColumn(name = "playlist_id")
     private PlayList playListSet;
