@@ -23,7 +23,7 @@ public class UserController {
 //        return new ResponseEntity<>(users, HttpStatus.OK);
 //    }
 
-    @PutMapping("/edit/{id}")
+    @PutMapping("{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user){
         Optional<User> user1 = userService.findById(id);
         if (!user1.isPresent()){

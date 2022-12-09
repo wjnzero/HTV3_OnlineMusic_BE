@@ -1,6 +1,7 @@
 package com.htv3.htv3onlinemusic.controller.song;
 
 import com.htv3.htv3onlinemusic.model.Song;
+import com.htv3.htv3onlinemusic.model.dto.ISong;
 import com.htv3.htv3onlinemusic.service.song.ISongService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,6 +23,12 @@ public class SongController {
         Iterable<Song> songs = songService.findAll();
         return new ResponseEntity<>(songs, HttpStatus.OK);
     }
+    @GetMapping("/findByUser/{id}")
+    public ResponseEntity<Iterable<ISong>> findSongByUser(@PathVariable Long id){
+        Iterable<ISong> songs = songService.findSongByUser(id);
+        return new ResponseEntity<>(songs, HttpStatus.OK);
+    }
+
     @PostMapping("/create")
     public ResponseEntity<Song> createSong(@RequestBody Song song){
         songService.save(song);
@@ -43,7 +50,7 @@ public class SongController {
         if (!song.isPresent()){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(song.get() , HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(song.get() , HttpStatus.OK);
     }
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Song> deleteCourse(@PathVariable Long id) {
@@ -52,7 +59,7 @@ public class SongController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         songService.remove(id);
-        return new ResponseEntity<>(song.get(), HttpStatus.OK);
+        return new ResponseEntity<>(null, HttpStatus.OK);
     }
     @GetMapping("/search")
     public ResponseEntity<Iterable<Song>> findSongByName(@RequestParam String name) {

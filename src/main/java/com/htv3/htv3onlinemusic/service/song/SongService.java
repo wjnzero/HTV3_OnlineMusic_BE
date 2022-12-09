@@ -1,6 +1,7 @@
 package com.htv3.htv3onlinemusic.service.song;
 
 import com.htv3.htv3onlinemusic.model.Song;
+import com.htv3.htv3onlinemusic.model.dto.ISong;
 import com.htv3.htv3onlinemusic.repository.SongRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,8 +14,18 @@ public class SongService implements ISongService {
     SongRepository songRepository;
 
     @Override
+    public Iterable<Song> findSongByName(String name) {
+        return songRepository.findSongByName(name);
+    }
+
+    @Override
     public Iterable<Song> findAll() {
         return songRepository.findAll();
+    }
+
+    @Override
+    public Iterable<ISong> findSongByUser(Long id) {
+        return songRepository.getSongByUser(id);
     }
 
     @Override
@@ -31,9 +42,9 @@ public class SongService implements ISongService {
     public void remove(Long id) {
         songRepository.deleteById(id);
     }
-
     @Override
     public Iterable<Song> findByNameContaining(String name) {
         return songRepository.findByNameContaining(name);
     }
+
 }
