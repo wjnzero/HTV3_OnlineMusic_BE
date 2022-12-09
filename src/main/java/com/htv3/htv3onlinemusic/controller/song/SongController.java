@@ -19,39 +19,42 @@ public class SongController {
     private ISongService songService;
 
     @GetMapping("/")
-    public ResponseEntity<Iterable<Song>> findAllSong(){
+    public ResponseEntity<Iterable<Song>> findAllSong() {
         Iterable<Song> songs = songService.findAll();
         return new ResponseEntity<>(songs, HttpStatus.OK);
     }
+
     @GetMapping("/findByUser/{id}")
-    public ResponseEntity<Iterable<ISong>> findSongByUser(@PathVariable Long id){
+    public ResponseEntity<Iterable<ISong>> findSongByUser(@PathVariable Long id) {
         Iterable<ISong> songs = songService.findSongByUser(id);
         return new ResponseEntity<>(songs, HttpStatus.OK);
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Song> createSong(@RequestBody Song song){
+    public ResponseEntity<Song> createSong(@RequestBody Song song) {
         songService.save(song);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PutMapping("/edit/{id}")
-    public ResponseEntity<Song> updateSong(@PathVariable Long id,@RequestBody Song song){
+    public ResponseEntity<Song> updateSong(@PathVariable Long id, @RequestBody Song song) {
         Optional<Song> song1 = songService.findById(id);
-        if (!song1.isPresent()){
+        if (!song1.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         song.setId(song1.get().getId());
         return new ResponseEntity<>(songService.save(song), HttpStatus.OK);
     }
+
     @GetMapping("/{id}")
-    public ResponseEntity<Song> findByID(@PathVariable Long id){
+    public ResponseEntity<Song> findByID(@PathVariable Long id) {
         Optional<Song> song = songService.findById(id);
-        if (!song.isPresent()){
+        if (!song.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(song.get() , HttpStatus.OK);
+        return new ResponseEntity<>(song.get(), HttpStatus.OK);
     }
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Song> deleteCourse(@PathVariable Long id) {
         Optional<Song> song = songService.findById(id);
@@ -61,6 +64,7 @@ public class SongController {
         songService.remove(id);
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
+
     @GetMapping("/search")
     public ResponseEntity<Iterable<Song>> findSongByName(@RequestParam String name) {
         Iterable<Song> songs = songService.findByNameContaining(name);
