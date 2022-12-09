@@ -22,6 +22,7 @@ public class User {
     private String name;
     private String email;
     private String avatar;
+    private String address;
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "role_user", joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "role_id")})
