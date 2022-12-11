@@ -14,11 +14,6 @@ public class SongService implements ISongService {
     SongRepository songRepository;
 
     @Override
-    public Iterable<Song> findSongByName(String name) {
-        return songRepository.findSongByName(name);
-    }
-
-    @Override
     public Iterable<Song> findAll() {
         return songRepository.findAll();
     }
