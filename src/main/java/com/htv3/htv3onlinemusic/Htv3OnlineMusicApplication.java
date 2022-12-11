@@ -9,5 +9,4 @@ public class Htv3OnlineMusicApplication {
     public static void main(String[] args) {
         SpringApplication.run(Htv3OnlineMusicApplication.class, args);
     }
-
 }
