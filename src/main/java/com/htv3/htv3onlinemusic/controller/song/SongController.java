@@ -1,8 +1,10 @@
 package com.htv3.htv3onlinemusic.controller.song;
 
 import com.htv3.htv3onlinemusic.model.Song;
+import com.htv3.htv3onlinemusic.model.User;
 import com.htv3.htv3onlinemusic.model.dto.ISong;
 import com.htv3.htv3onlinemusic.service.song.ISongService;
+import com.htv3.htv3onlinemusic.service.user.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -17,6 +19,8 @@ import java.util.Optional;
 public class SongController {
     @Autowired
     private ISongService songService;
+    @Autowired
+    private IUserService userService;
 
     @GetMapping("/")
     public ResponseEntity<Iterable<Song>> findAllSong() {
@@ -30,8 +34,14 @@ public class SongController {
         return new ResponseEntity<>(songs, HttpStatus.OK);
     }
 
-    @PostMapping("/create")
-    public ResponseEntity<Song> createSong(@RequestBody Song song) {
+    @PostMapping("/create/{id}")
+    public ResponseEntity<Song> createSong(@PathVariable Long id,@RequestBody Song song) {
+//        Iterable<ISong> songs = songService.findSongByUser(id);
+        song.setUser(userService.findById(id).get());
+        song.setName(song.getName());
+        song.setDescribeSong(song.getDescribeSong());
+        song.setFileMp3(song.getFileMp3());
+        song.setAvatar(song.getAvatar());
         songService.save(song);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -62,7 +72,7 @@ public class SongController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         songService.remove(id);
-        return new ResponseEntity<>(null, HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/search")
