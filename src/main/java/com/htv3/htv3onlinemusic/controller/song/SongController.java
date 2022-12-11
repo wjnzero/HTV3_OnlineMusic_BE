@@ -35,7 +35,7 @@ public class SongController {
     }
 
     @PostMapping("/create/{id}")
-    public ResponseEntity<Song> createSong(@PathVariable Long id,@RequestBody Song song) {
+    public ResponseEntity<Song> createSong(@PathVariable Long id, @RequestBody Song song) {
 //        Iterable<ISong> songs = songService.findSongByUser(id);
         song.setUser(userService.findById(id).get());
         song.setName(song.getName());
@@ -78,6 +78,9 @@ public class SongController {
     @GetMapping("/search")
     public ResponseEntity<Iterable<Song>> findByNameContaining(@RequestParam String name) {
         Iterable<Song> songs = songService.findByNameContaining(name);
+        if (songs == null) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
         return new ResponseEntity<>(songs, HttpStatus.OK);
     }
 }
