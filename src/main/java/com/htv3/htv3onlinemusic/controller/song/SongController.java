@@ -78,19 +78,10 @@ public class SongController {
     //hug
     @GetMapping("/search")
     public ResponseEntity<Iterable<Song>> findByNameContaining(@RequestParam("name") String name) {
-        Iterable<Song> songs = songService.findByNameContaining(name);
-        if (songs == null) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(songs, HttpStatus.OK);
-    }
-
-//    @GetMapping("/search/{name}")
-//    public ResponseEntity<Iterable<Song>> findByNameContaining(@PathVariable String name) {
 //        Iterable<Song> songs = songService.findByNameContaining(name);
 //        if (songs == null) {
 //            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 //        }
-//        return new ResponseEntity<>(songs, HttpStatus.OK);
-//    }
+        return new ResponseEntity<>(songService.findByNameContaining(name), HttpStatus.OK);
+    }
 }
