@@ -84,4 +84,9 @@ public class SongController {
 //        }
         return new ResponseEntity<>(songService.findByNameContaining(name), HttpStatus.OK);
     }
+
+    @GetMapping("/search/name_create/{name_create}")
+    public ResponseEntity<Iterable<Song>> findSongByNameCreate(@PathVariable String name_create){
+        return new ResponseEntity<>(songService.findSongByNameCreate(name_create), HttpStatus.OK);
+    }
 }
