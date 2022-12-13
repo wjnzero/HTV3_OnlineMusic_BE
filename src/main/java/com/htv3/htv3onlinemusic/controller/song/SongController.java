@@ -1,5 +1,6 @@
 package com.htv3.htv3onlinemusic.controller.song;
 
+import com.htv3.htv3onlinemusic.model.PlayList;
 import com.htv3.htv3onlinemusic.model.Song;
 import com.htv3.htv3onlinemusic.model.User;
 import com.htv3.htv3onlinemusic.model.dto.ISong;
@@ -52,8 +53,11 @@ public class SongController {
         if (!song1.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        song.setId(song1.get().getId());
-        return new ResponseEntity<>(songService.save(song), HttpStatus.OK);
+        song1.get().setName(song.getName());
+        song1.get().setDescribeSong(song.getDescribeSong());
+        song1.get().setAvatar(song.getAvatar());
+        song1.get().setFileMp3(song.getFileMp3());
+        return new ResponseEntity<>(songService.save(song1.get()), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
