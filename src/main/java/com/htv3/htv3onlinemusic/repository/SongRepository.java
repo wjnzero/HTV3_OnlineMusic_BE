@@ -7,6 +7,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+
 @Repository
 public interface SongRepository extends PagingAndSortingRepository<Song,Long> {
 
@@ -17,5 +18,10 @@ public interface SongRepository extends PagingAndSortingRepository<Song,Long> {
     @Query(value="select * from  song s where s.name like %:name%", nativeQuery=true)
     Iterable<Song> findByNameContaining(@Param("name")String name);
 
+    @Query(value = "select s.id,s.name,a.name from song s join author a on s.author_id = a.id where a.name LIKE '%author%'" ,nativeQuery = true)
+    Iterable<Song> findSongByAuthorContaining(String author);
+
+    @Query(value = "select s.id,s.name, sg.name from song s join singer sg on  s.singer_id= sg.id where sg.name LIKE '%:singer%'" ,nativeQuery = true)
+    Iterable<Song> findSongBySingerContaining (@Param("singer") String singer);
 }
 
