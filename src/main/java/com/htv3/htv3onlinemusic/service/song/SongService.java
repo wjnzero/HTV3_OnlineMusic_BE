@@ -5,7 +5,6 @@ import com.htv3.htv3onlinemusic.model.dto.ISong;
 import com.htv3.htv3onlinemusic.repository.SongRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Optional;
 
@@ -43,9 +42,13 @@ public class SongService implements ISongService {
     public Iterable<Song> findByNameContaining(String name) {
         return songRepository.findByNameContaining(name);
     }
+    @Override
+    public Iterable<Song> findSongByAuthorContaining(String author) {
+        return songRepository.findSongByAuthorContaining(author);
+    }
 
     @Override
-    public Iterable<Song> findSongByNameCreate(String name_create) {
-        return songRepository.findSongByNameCreate("%"+name_create+"%");
+    public Iterable<Song> findSongBySingerContaining(String singer){
+        return songRepository.findSongBySingerContaining(singer);
     }
 }
