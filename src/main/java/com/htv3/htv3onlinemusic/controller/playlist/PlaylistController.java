@@ -3,9 +3,7 @@ package com.htv3.htv3onlinemusic.controller.playlist;
 
 import com.htv3.htv3onlinemusic.model.PlayList;
 import com.htv3.htv3onlinemusic.model.Song;
-import com.htv3.htv3onlinemusic.model.User;
 import com.htv3.htv3onlinemusic.model.dto.IPlaylist;
-import com.htv3.htv3onlinemusic.repository.PlaylistRepository;
 import com.htv3.htv3onlinemusic.service.playlist.IPlaylistService;
 import com.htv3.htv3onlinemusic.service.user.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,5 +74,9 @@ public class PlaylistController {
         }
         playlistService.remove(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+    @GetMapping("/search")
+    public ResponseEntity<Iterable<PlayList>> findByNamePlaylistContaining(@RequestParam("name") String name) {
+        return new ResponseEntity<>(playlistService.findByNamePlaylistContaining(name), HttpStatus.OK);
     }
 }
