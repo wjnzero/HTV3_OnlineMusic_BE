@@ -1,13 +1,10 @@
 package com.htv3.htv3onlinemusic.controller.song;
 
-import com.htv3.htv3onlinemusic.model.PlayList;
 import com.htv3.htv3onlinemusic.model.Song;
-import com.htv3.htv3onlinemusic.model.User;
 import com.htv3.htv3onlinemusic.model.dto.ISong;
 import com.htv3.htv3onlinemusic.service.song.ISongService;
 import com.htv3.htv3onlinemusic.service.user.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -87,6 +84,7 @@ public class SongController {
 
     @GetMapping("/search/author")
     public ResponseEntity<Iterable<Song>> findSongByAuthorContaining(@RequestParam("author") String author){
+        Iterable<Song> s = songService.findSongByAuthorContaining(author);
         return new ResponseEntity<>(songService.findSongByAuthorContaining(author), HttpStatus.OK);
     }
     @GetMapping("/search/singer")
