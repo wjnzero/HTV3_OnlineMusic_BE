@@ -21,6 +21,11 @@ public class PlayList {
     private String timeCreate;
     private String lastTimeEdit;
 
+    @OneToMany
+    @JoinColumn(name = "playlist_id")
+    private Set<Comment> comment;
+
+
     @Value("0")
     private Long viewPlaylist;
 

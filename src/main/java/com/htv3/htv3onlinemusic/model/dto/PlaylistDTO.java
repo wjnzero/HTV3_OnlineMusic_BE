@@ -9,11 +9,10 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class SongDTO {
+public class PlaylistDTO {
     private Long id;
     private String name;
-    private String describeSong;
-    private String fileMp3;
-    private String avatar;
-    private String album;
+    private String describe_playlist;
+//    private String avatar;
+//    private String album;
 }

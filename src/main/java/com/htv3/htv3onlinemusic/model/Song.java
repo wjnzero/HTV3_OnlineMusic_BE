@@ -22,6 +22,10 @@ public class Song {
     private String fileMp3;
     private String avatar;
 
+    @OneToMany
+    @JoinColumn(name = "song_id")
+    private Set<Comment> comment;
+
     @OneToOne
     @JoinColumn(name = "author_id")
     private Author author;
@@ -45,6 +49,7 @@ public class Song {
     private Set<SongType> songTypes;
 
     private String album;
+
     @Value("0")
     private Long viewSong;
 }
