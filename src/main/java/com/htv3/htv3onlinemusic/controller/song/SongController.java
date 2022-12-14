@@ -35,6 +35,13 @@ public class SongController {
         return new ResponseEntity<>(songs, HttpStatus.OK);
     }
 
+    @GetMapping("/findsonginplaylist/{id}")
+    public ResponseEntity<Iterable<Song>> findSongInPlaylist(@PathVariable Long id){
+        Iterable<Song> songs = songService.findSongInPlaylist(id);
+        return new ResponseEntity<>(songs,HttpStatus.OK);
+    }
+
+
     @PostMapping("/create/{id}")
     public ResponseEntity<Song> createSong(@PathVariable Long id, @RequestBody Song song) {
 //        Iterable<ISong> songs = songService.findSongByUser(id);

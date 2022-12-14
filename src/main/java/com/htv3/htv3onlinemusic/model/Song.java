@@ -3,6 +3,8 @@ package com.htv3.htv3onlinemusic.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -43,5 +45,6 @@ public class Song {
     private Set<SongType> songTypes;
 
     private String album;
-    private String view;
+    @Value("0")
+    private Long viewSong;
 }
