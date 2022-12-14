@@ -2,6 +2,9 @@ package com.htv3.htv3onlinemusic.controller.song;
 
 import com.htv3.htv3onlinemusic.model.Song;
 import com.htv3.htv3onlinemusic.model.dto.ISong;
+import com.htv3.htv3onlinemusic.model.dto.PlaylistDTO;
+import com.htv3.htv3onlinemusic.model.dto.SongDTO;
+import com.htv3.htv3onlinemusic.service.playlist.IPlaylistService;
 import com.htv3.htv3onlinemusic.service.song.ISongService;
 import com.htv3.htv3onlinemusic.service.user.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +21,8 @@ public class SongController {
     @Autowired
     private ISongService songService;
     @Autowired
+    private IPlaylistService playlistService;
+    @Autowired
     private IUserService userService;
 
     @GetMapping("/")
@@ -32,6 +37,11 @@ public class SongController {
         return new ResponseEntity<>(songs, HttpStatus.OK);
     }
 
+    @GetMapping("/findsonginplaylist/{id}")
+    public ResponseEntity<Iterable<Song>> findSongInPlaylist(@PathVariable Long id){
+        Iterable<Song> songs = songService.findSongInPlaylist(id);
+        return new ResponseEntity<>(songs,HttpStatus.OK);
+    }
     @PostMapping("/create/{id}")
     public ResponseEntity<Song> createSong(@PathVariable Long id, @RequestBody Song song) {
 //        Iterable<ISong> songs = songService.findSongByUser(id);
@@ -41,6 +51,15 @@ public class SongController {
         song.setFileMp3(song.getFileMp3());
         song.setAvatar(song.getAvatar());
         songService.save(song);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @PostMapping("/createsonginplaylist/{id}")
+    public ResponseEntity<Song> createSongInPlaylist (@PathVariable Long id,@RequestBody PlaylistDTO playlistDTO){
+        Song song;
+        song = songService.findById(playlistDTO.getId()).get();
+        PlayList playList = new PlayList();
+        playList.setId(playList.getId());
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 

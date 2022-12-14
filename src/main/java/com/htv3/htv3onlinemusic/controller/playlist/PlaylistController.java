@@ -11,6 +11,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Optional;
 
 @RestController
@@ -34,8 +37,11 @@ public class PlaylistController {
     }
     @PostMapping("/create/{id}")
     public ResponseEntity<PlayList> createPlaylist(@PathVariable Long id,@RequestBody PlayList playList ){
+        Date date = new Date();
         playList.setUsers(userService.findById(id).get());
         playList.setName(playList.getName());
+        playList.setTimeCreate(String.valueOf(new Timestamp(date.getTime())));
+
         playlistService.save(playList);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -45,7 +51,9 @@ public class PlaylistController {
         if (!playLists.isPresent()){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+        Date date = new Date();
         (playLists.get()).setName(playList.getName());
+        playList.setLastTimeEdit(String.valueOf(new Timestamp(date.getTime())));
         playlistService.save(playLists.get());
         return new ResponseEntity<>(HttpStatus.OK);
     }
