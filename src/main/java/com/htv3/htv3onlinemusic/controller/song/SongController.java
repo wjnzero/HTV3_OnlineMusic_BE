@@ -1,5 +1,6 @@
 package com.htv3.htv3onlinemusic.controller.song;
 
+import com.htv3.htv3onlinemusic.model.PlayList;
 import com.htv3.htv3onlinemusic.model.Song;
 import com.htv3.htv3onlinemusic.model.dto.ISong;
 import com.htv3.htv3onlinemusic.model.dto.PlaylistDTO;
@@ -102,9 +103,8 @@ public class SongController {
     }
 
     @GetMapping("/search/author")
-    public ResponseEntity<Iterable<Song>> findSongByAuthorContaining(@RequestParam("author") String author){
-        Iterable<Song> s = songService.findSongByAuthorContaining(author);
-        return new ResponseEntity<>(songService.findSongByAuthorContaining(author), HttpStatus.OK);
+    public ResponseEntity<Iterable<Song>> findSongByAuthorNameContaining(@RequestParam("author") String author){
+        return new ResponseEntity<>(songService.findSongByAuthorNameContaining(author), HttpStatus.OK);
     }
     @GetMapping("/search/singer")
     public ResponseEntity<Iterable<Song>> findSongBySingerContaining(@RequestParam("singer") String singer){
