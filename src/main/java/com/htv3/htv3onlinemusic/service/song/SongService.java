@@ -5,6 +5,7 @@ import com.htv3.htv3onlinemusic.model.dto.ISong;
 import com.htv3.htv3onlinemusic.repository.SongRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -29,6 +30,7 @@ public class SongService implements ISongService {
     }
 
     @Override
+    @Transactional
     public Song save(Song song) {
         return songRepository.save(song);
     }

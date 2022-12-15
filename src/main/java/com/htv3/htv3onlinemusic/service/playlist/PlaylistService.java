@@ -6,6 +6,7 @@ import com.htv3.htv3onlinemusic.model.dto.IPlaylist;
 import com.htv3.htv3onlinemusic.repository.PlaylistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -25,6 +26,7 @@ public class PlaylistService implements IPlaylistService {
     }
 
     @Override
+    @Transactional
     public PlayList save(PlayList playList) {
         return playlistRepository.save(playList);
     }

@@ -85,7 +85,6 @@ public class PlaylistController {
     @DeleteMapping("/deletesong/{id}")
     public ResponseEntity<PlayList> deleteSongInPlaylist(@PathVariable Long id,@RequestBody Song song){
         Optional<Song> songs = songService.findById(id);
-
         playlistService.remove(songs.get().getId());
         return new ResponseEntity<>(HttpStatus.OK);
     }

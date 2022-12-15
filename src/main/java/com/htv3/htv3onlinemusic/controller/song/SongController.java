@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Connection;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.HashSet;
@@ -56,15 +57,20 @@ public class SongController {
 
     @PostMapping("/create/{id}")
     public ResponseEntity<Song> createSong(@PathVariable Long id, @RequestBody Song song) {
-//        Iterable<ISong> songs = songService.findSongByUser(id);
-        Date date = new Date();
-        song.setUser(userService.findById(id).get());
-        song.setName(song.getName());
-        song.setDescribeSong(song.getDescribeSong());
-        song.setFileMp3(song.getFileMp3());
-        song.setAvatar(song.getAvatar());
-        song.setTimeCreate(String.valueOf(new Timestamp(date.getTime())));
-        songService.save(song);
+        try {
+
+            Date date = new Date();
+            song.setUser(userService.findById(id).get());
+            song.setName(song.getName());
+            song.setDescribeSong(song.getDescribeSong());
+            song.setFileMp3(song.getFileMp3());
+            song.setAvatar(song.getAvatar());
+            song.setTimeCreate(String.valueOf(new Timestamp(date.getTime())));
+            songService.save(song);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
