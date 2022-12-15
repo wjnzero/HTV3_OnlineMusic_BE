@@ -23,7 +23,7 @@ public class Song {
     private String fileMp3;
     private String avatar;
     private LocalDate dateCreateSong;
-    private String lastTimeEdit;
+    private LocalDate lastTimeEdit;
     private String album;
     @Value("0")
     private Long viewSong;
