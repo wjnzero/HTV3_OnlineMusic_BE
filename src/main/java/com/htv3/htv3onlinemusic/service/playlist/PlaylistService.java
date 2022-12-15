@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -15,6 +16,7 @@ public class PlaylistService implements IPlaylistService {
 
     @Autowired
     private PlaylistRepository playlistRepository;
+
     @Override
     public Iterable<PlayList> findAll() {
         return playlistRepository.findAll();
@@ -37,9 +39,15 @@ public class PlaylistService implements IPlaylistService {
     }
 
     @Override
-    public Iterable<IPlaylist> findPlaylistByUser(Long id) {
+    public Iterable<PlayList> findPlaylistByUser(Long id) {
         return playlistRepository.getPlayListByUser(id);
     }
+
+    @Override
+    public List<PlayList> findAllPlaylistByUser(Long id) {
+        return playlistRepository.findAllByUsers(id);
+    }
+
 
     @Override
     public Iterable<PlayList> findByNamePlaylistContaining(String name) {

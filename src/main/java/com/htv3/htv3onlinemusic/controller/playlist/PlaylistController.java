@@ -36,8 +36,8 @@ public class PlaylistController {
     }
 
     @GetMapping("/findPlaylistByUser/{id}")
-    public ResponseEntity<Iterable<IPlaylist>> findPlaylistByUser(@PathVariable Long id) {
-        Iterable<IPlaylist> playLists = playlistService.findPlaylistByUser(id);
+    public ResponseEntity<Iterable<PlayList>> findPlaylistByUser(@PathVariable Long id) {
+        Iterable<PlayList> playLists = playlistService.findPlaylistByUser(id);
         return new ResponseEntity<>(playLists, HttpStatus.OK);
     }
 
