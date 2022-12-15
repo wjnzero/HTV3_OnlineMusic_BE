@@ -27,9 +27,6 @@ public class Song {
     private String album;
     @Value("0")
     private Long viewSong;
-    @OneToMany
-    @JoinColumn(name = "song_id")
-    private Set<Comment> comment;
 
     @OneToOne
     @JoinColumn(name = "author_id")

@@ -121,6 +121,12 @@ public class SongController {
     public Song setUpCounter() {
         return new Song();
     }
+
+    @GetMapping("/newest")
+    public ResponseEntity<Iterable<Song>> getSevenSongNewest(){
+        return new ResponseEntity<>(songService.getSongNewest(), HttpStatus.OK);
+    }
+
 //    @GetMapping("/view")
 //    public String get(@ModelAttribute("viewSong") Song viewSong) {
 //        viewSong.increment();

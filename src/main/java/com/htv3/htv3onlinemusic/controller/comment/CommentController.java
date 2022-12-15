@@ -19,5 +19,10 @@ public class CommentController {
     public ResponseEntity<Iterable<Comment>> getAllCommentBySongId(@PathVariable("idSong") Long idSong) {
         return new ResponseEntity<>(commentService.getCommentBySongId(idSong), HttpStatus.OK);
     }
+    @PostMapping("/song")
+    public ResponseEntity<Comment> createCommentSong(@RequestBody Comment commentSong) {
+        commentService.save(commentSong);
+        return new ResponseEntity<>(commentSong, HttpStatus.OK);
+    }
 
 }
