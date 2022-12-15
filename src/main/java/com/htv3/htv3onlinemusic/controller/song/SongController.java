@@ -72,7 +72,7 @@ public class SongController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @PostMapping("/{id}/playlist/{idPlay}")
+    @GetMapping("/{id}/playlist/{idPlay}")
     public ResponseEntity<Song> createSongInPlaylist(@PathVariable Long id, @PathVariable Long idPlay) {
         try {
             Song song1 = songService.findById(id).get();
