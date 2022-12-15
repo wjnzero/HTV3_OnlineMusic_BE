@@ -103,8 +103,8 @@ public class SongController {
 
     @GetMapping("/search/author")
     public ResponseEntity<Iterable<Song>> findSongByAuthorContaining(@RequestParam("author") String author){
-        Iterable<Song> s = songService.findSongByAuthorContaining(author);
-        return new ResponseEntity<>(songService.findSongByAuthorContaining(author), HttpStatus.OK);
+        Iterable<Song> s = songService.findSongByAuthorNameContaining(author);
+        return new ResponseEntity<>(songService.findSongByAuthorNameContaining(author), HttpStatus.OK);
     }
     @GetMapping("/search/singer")
     public ResponseEntity<Iterable<Song>> findSongBySingerContaining(@RequestParam("singer") String singer){

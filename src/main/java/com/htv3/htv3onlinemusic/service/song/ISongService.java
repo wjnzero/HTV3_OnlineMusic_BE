@@ -14,7 +14,7 @@ public interface ISongService extends GenericService<Song> {
 
     Iterable<Song> findByNameContaining(String name);
 
-    Iterable<Song> findSongByAuthorContaining(String author);
+    Iterable<Song> findSongByAuthorNameContaining(String author);
 
     Iterable<Song> findSongBySingerContaining(String singer);
 }
