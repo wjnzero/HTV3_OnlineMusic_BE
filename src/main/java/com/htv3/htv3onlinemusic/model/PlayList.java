@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
@@ -18,8 +19,8 @@ public class PlayList {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String timeCreate;
-    private String lastTimeEdit;
+    private LocalDate timeCreate;
+    private LocalDate lastTimeEdit;
 
     @OneToMany
     @JoinColumn(name = "playlist_id")

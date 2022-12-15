@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.Connection;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Optional;
@@ -58,16 +59,13 @@ public class SongController {
     @PostMapping("/create/{id}")
     public ResponseEntity<Song> createSong(@PathVariable Long id, @RequestBody Song song) {
         try {
-
-            Date date = new Date();
             song.setUser(userService.findById(id).get());
             song.setName(song.getName());
             song.setDescribeSong(song.getDescribeSong());
             song.setFileMp3(song.getFileMp3());
             song.setAvatar(song.getAvatar());
-            song.setTimeCreate(String.valueOf(new Timestamp(date.getTime())));
             songService.save(song);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -84,12 +82,28 @@ public class SongController {
             playListSet.add(playList);
             song1.setPlayLists(playListSet);
             songService.save(song1);
-
         } catch (Exception e) {
             e.printStackTrace();
         }
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
+//    @@DeleteMapping("/{id}/playlist/{idPlay}")
+//    public ResponseEntity<Song> deleteSongInPlaylist(@PathVariable Long id, @PathVariable Long idPlay) {
+//        try {
+//            Song song1 = songService.findById(id).get();
+//            PlayList playList = playlistService.findById(idPlay).get();
+//            Set<PlayList> playListSet = new HashSet<>();
+//            playListSet = song1.getPlayLists();
+//            playListSet.add(playList);
+//            song1.setPlayLists(playListSet);
+//            songService.remove(song1);
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return new ResponseEntity<>(HttpStatus.CREATED);
+//    }
 
     @PutMapping("/edit/{id}")
     public ResponseEntity<Song> updateSong(@PathVariable Long id, @RequestBody Song song) {
@@ -102,7 +116,6 @@ public class SongController {
         song1.get().setDescribeSong(song.getDescribeSong());
         song1.get().setAvatar(song.getAvatar());
         song1.get().setFileMp3(song.getFileMp3());
-        song1.get().setTimeCreate(String.valueOf(new Timestamp(date.getTime())));
         return new ResponseEntity<>(songService.save(song1.get()), HttpStatus.OK);
     }
 
@@ -130,12 +143,11 @@ public class SongController {
         return new ResponseEntity<>(songService.findByNameContaining(name), HttpStatus.OK);
     }
 
-    @GetMapping("/search/author")
-    public ResponseEntity<Iterable<Song>> findSongByAuthorContaining(@RequestParam("author") String author) {
-        Iterable<Song> s = songService.findSongByAuthorContaining(author);
-        return new ResponseEntity<>(songService.findSongByAuthorContaining(author), HttpStatus.OK);
-    }
-
+    //    @GetMapping("/search/author")
+//    public ResponseEntity<Iterable<Song>> findSongByAuthorContaining(@RequestParam("author") String author) {
+//        Iterable<Song> s = songService.findSongByAuthorContaining(author);
+//        return new ResponseEntity<>(songService.findSongByAuthorContaining(author), HttpStatus.OK);
+//    }
     @GetMapping("/search/singer")
     public ResponseEntity<Iterable<Song>> findSongBySingerContaining(@RequestParam("singer") String singer) {
         return new ResponseEntity<>(songService.findSongBySingerContaining(singer), HttpStatus.OK);

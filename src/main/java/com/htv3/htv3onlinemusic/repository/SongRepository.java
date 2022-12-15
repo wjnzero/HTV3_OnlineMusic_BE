@@ -19,13 +19,16 @@ public interface SongRepository extends PagingAndSortingRepository<Song,Long> {
     Iterable<Song> findByNameContaining(@Param("name")String name);
 
     @Query(value = "select * from song s join author a on s.author_id = a.id where a.name LIKE %:author%" ,nativeQuery = true)
-    Iterable<Song> findSongByAuthorContaining(String author);
+    Iterable<Song> findSongByAuthorNameContaining(String author);
 
     @Query(value = "select * from song s join singer sg on  s.singer_id= sg.id where sg.name LIKE %:singer%" ,nativeQuery = true)
     Iterable<Song> findSongBySingerContaining (@Param("singer") String singer);
 
     @Query(nativeQuery = true,value = "select  *  from song join playlist_of_song on `song`.`id` = playlist_of_song.song_id where playlist_of_song.playlist_id = :id")
     Iterable<Song> getSongInPlaylist(@Param("id") Long id);
+
+    @Query(value = "select * from song order by date_create_song desc limit 7", nativeQuery = true)
+    Iterable<Song> getSongNewest();
 
 }
 
