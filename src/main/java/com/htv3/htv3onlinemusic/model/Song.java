@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
@@ -21,7 +22,7 @@ public class Song {
     private String describeSong;
     private String fileMp3;
     private String avatar;
-    private String timeCreate;
+    private LocalDate dateCreateSong;
     private String lastTimeEdit;
     private String album;
     @Value("0")

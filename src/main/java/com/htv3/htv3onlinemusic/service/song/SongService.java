@@ -42,14 +42,20 @@ public class SongService implements ISongService {
     public Iterable<Song> findByNameContaining(String name) {
         return songRepository.findByNameContaining(name);
     }
+
     @Override
     public Iterable<Song> findSongByAuthorNameContaining(String author) {
         return songRepository.findSongByAuthorNameContaining(author);
     }
 
     @Override
-    public Iterable<Song> findSongBySingerContaining(String singer){
+    public Iterable<Song> findSongBySingerContaining(String singer) {
         return songRepository.findSongBySingerContaining(singer);
+    }
+
+    @Override
+    public Iterable<Song> getSongNewest() {
+        return songRepository.getSongNewest();
     }
 
     @Override
