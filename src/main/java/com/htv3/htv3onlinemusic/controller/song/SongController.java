@@ -154,7 +154,7 @@ public class SongController {
     }
 
     @GetMapping("/newest")
-    public ResponseEntity<Iterable<Song>> getSevenSongNewest(){
+    public ResponseEntity<Iterable<Song>> getSongNewest(){
         return new ResponseEntity<>(songService.getSongNewest(), HttpStatus.OK);
     }
 }
