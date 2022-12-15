@@ -108,7 +108,6 @@ public class SongController {
     @PutMapping("/edit/{id}")
     public ResponseEntity<Song> updateSong(@PathVariable Long id, @RequestBody Song song) {
         Optional<Song> song1 = songService.findById(id);
-        Date date = new Date();
         if (!song1.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -116,7 +115,9 @@ public class SongController {
         song1.get().setDescribeSong(song.getDescribeSong());
         song1.get().setAvatar(song.getAvatar());
         song1.get().setFileMp3(song.getFileMp3());
-        return new ResponseEntity<>(songService.save(song1.get()), HttpStatus.OK);
+        song1.get().setLastTimeEdit(song.getLastTimeEdit());
+        songService.save(song1.get());
+        return new ResponseEntity<>( HttpStatus.OK);
     }
 
     @GetMapping("/{id}")

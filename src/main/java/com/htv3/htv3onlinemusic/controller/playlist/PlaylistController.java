@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.Optional;
 
@@ -36,8 +37,8 @@ public class PlaylistController {
     }
 
     @GetMapping("/findPlaylistByUser/{id}")
-    public ResponseEntity<Iterable<IPlaylist>> findPlaylistByUser(@PathVariable Long id) {
-        Iterable<IPlaylist> playLists = playlistService.findPlaylistByUser(id);
+    public ResponseEntity<Iterable<PlayList>> findPlaylistByUser(@PathVariable Long id) {
+        Iterable<PlayList> playLists = playlistService.findPlaylistByUser(id);
         return new ResponseEntity<>(playLists, HttpStatus.OK);
     }
 
@@ -55,9 +56,8 @@ public class PlaylistController {
         if (!playLists.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        Date date = new Date();
         (playLists.get()).setName(playList.getName());
-        playList.setLastTimeEdit(LocalDate.parse(String.valueOf(new Timestamp(date.getTime()))));
+        playList.setLastTimeEdit(LocalDate.now(ZoneId.systemDefault()));
         playlistService.save(playLists.get());
         return new ResponseEntity<>(HttpStatus.OK);
     }
