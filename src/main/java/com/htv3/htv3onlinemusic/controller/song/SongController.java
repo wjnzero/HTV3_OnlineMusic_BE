@@ -152,4 +152,9 @@ public class SongController {
     public ResponseEntity<Iterable<Song>> findSongBySingerContaining(@RequestParam("singer") String singer) {
         return new ResponseEntity<>(songService.findSongBySingerContaining(singer), HttpStatus.OK);
     }
+
+    @GetMapping("/newest")
+    public ResponseEntity<Iterable<Song>> getSevenSongNewest(){
+        return new ResponseEntity<>(songService.getSongNewest(), HttpStatus.OK);
+    }
 }
