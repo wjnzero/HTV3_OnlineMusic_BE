@@ -20,5 +20,8 @@ public class Comment {
     @ManyToOne
     @JoinColumn(name = "user_id_comment")
     private User userComment;
+    @ManyToOne
+    @JoinColumn(name = "song_id")
+    private Song songComment;
 
 }
