@@ -1,8 +1,8 @@
 package com.htv3.htv3onlinemusic.controller.song;
 
 import com.htv3.htv3onlinemusic.model.PlayList;
-import com.htv3.htv3onlinemusic.model.Role;
 import com.htv3.htv3onlinemusic.model.Song;
+import com.htv3.htv3onlinemusic.model.User;
 import com.htv3.htv3onlinemusic.model.dto.ISong;
 import com.htv3.htv3onlinemusic.service.playlist.IPlaylistService;
 import com.htv3.htv3onlinemusic.service.song.ISongService;
@@ -12,10 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Connection;
-import java.sql.Timestamp;
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -38,23 +34,22 @@ public class SongController {
     }
 
     @GetMapping("/findByUser/{id}")
-    public ResponseEntity<Iterable<ISong>> findSongByUser(@PathVariable Long id) {
-        Iterable<ISong> songs = songService.findSongByUser(id);
+    public ResponseEntity<Iterable<Song>> findSongByUser(@PathVariable Long id) {
+        Iterable<Song> songs = songService.findSongByUser(id);
         return new ResponseEntity<>(songs, HttpStatus.OK);
     }
-
     @GetMapping("/findsonginplaylist/{id}")
     public ResponseEntity<Iterable<Song>> findSongInPlaylist(@PathVariable Long id) {
         Iterable<Song> songs = songService.findSongInPlaylist(id);
         return new ResponseEntity<>(songs, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}/findsonginplaylist/{id1}")
-    public ResponseEntity<Iterable<Song>> deleteSongInPlaylist(@PathVariable Long id, @PathVariable Long id1) {
-        Iterable<Song> songs = songService.findSongInPlaylist(id);
-
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
+//    @DeleteMapping("/{id}/findsonginplaylist/{id1}")
+//    public ResponseEntity<Iterable<Song>> deleteSongInPlaylist(@PathVariable Long id, @PathVariable Long id1) {
+//        Iterable<Song> songs = songService.findSongInPlaylist(id);
+//
+//        return new ResponseEntity<>(HttpStatus.OK);
+//    }
 
     @PostMapping("/create/{id}")
     public ResponseEntity<Song> createSong(@PathVariable Long id, @RequestBody Song song) {

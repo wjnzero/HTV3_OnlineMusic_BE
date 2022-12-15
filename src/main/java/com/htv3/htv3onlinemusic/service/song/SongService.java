@@ -20,7 +20,7 @@ public class SongService implements ISongService {
     }
 
     @Override
-    public Iterable<ISong> findSongByUser(Long id) {
+    public Iterable<Song> findSongByUser(Long id) {
         return songRepository.getSongByUser(id);
     }
 
