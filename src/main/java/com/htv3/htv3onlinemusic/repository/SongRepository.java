@@ -27,7 +27,7 @@ public interface SongRepository extends PagingAndSortingRepository<Song,Long> {
     @Query(nativeQuery = true,value = "select  *  from song join playlist_of_song on `song`.`id` = playlist_of_song.song_id where playlist_of_song.playlist_id = :id")
     Iterable<Song> getSongInPlaylist(@Param("id") Long id);
 
-    @Query(value = "select * from song order by date_create_song desc limit 7", nativeQuery = true)
+    @Query(value = "select * from song order by date_create_song desc", nativeQuery = true)
     Iterable<Song> getSongNewest();
 
 }
