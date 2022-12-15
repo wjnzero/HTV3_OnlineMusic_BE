@@ -5,6 +5,7 @@ import com.htv3.htv3onlinemusic.model.dto.ISong;
 import com.htv3.htv3onlinemusic.repository.SongRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -29,6 +30,7 @@ public class SongService implements ISongService {
     }
 
     @Override
+    @Transactional
     public Song save(Song song) {
         return songRepository.save(song);
     }
@@ -42,14 +44,20 @@ public class SongService implements ISongService {
     public Iterable<Song> findByNameContaining(String name) {
         return songRepository.findByNameContaining(name);
     }
+
     @Override
     public Iterable<Song> findSongByAuthorNameContaining(String author) {
         return songRepository.findSongByAuthorNameContaining(author);
     }
 
     @Override
-    public Iterable<Song> findSongBySingerContaining(String singer){
+    public Iterable<Song> findSongBySingerContaining(String singer) {
         return songRepository.findSongBySingerContaining(singer);
+    }
+
+    @Override
+    public Iterable<Song> getSongNewest() {
+        return songRepository.getSongNewest();
     }
 
     @Override

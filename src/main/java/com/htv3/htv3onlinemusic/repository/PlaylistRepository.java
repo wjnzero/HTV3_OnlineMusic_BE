@@ -9,8 +9,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PlaylistRepository extends PagingAndSortingRepository<PlayList,Long> {
-    @Query(nativeQuery = true,value = "select`playlist`.`name` from playlist  where `playlist`.`user_id` = :id ;")
-    Iterable<IPlaylist> getPlayListByUser(@Param("id") Long id);
+    @Query(nativeQuery = true,value = "select * from playlist  where `playlist`.`user_id` = :id ;")
+    Iterable<PlayList> getPlayListByUser(@Param("id") Long id);
 
     @Query(value="select * from  playlist pl where pl.name like %:name%", nativeQuery=true)
     Iterable<PlayList> findByNamePlaylistContaining(@Param("name")String name);

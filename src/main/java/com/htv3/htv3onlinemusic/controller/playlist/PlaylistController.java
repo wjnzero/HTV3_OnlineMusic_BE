@@ -13,6 +13,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.Optional;
 
@@ -35,17 +37,15 @@ public class PlaylistController {
     }
 
     @GetMapping("/findPlaylistByUser/{id}")
-    public ResponseEntity<Iterable<IPlaylist>> findPlaylistByUser(@PathVariable Long id) {
-        Iterable<IPlaylist> playLists = playlistService.findPlaylistByUser(id);
+    public ResponseEntity<Iterable<PlayList>> findPlaylistByUser(@PathVariable Long id) {
+        Iterable<PlayList> playLists = playlistService.findPlaylistByUser(id);
         return new ResponseEntity<>(playLists, HttpStatus.OK);
     }
 
     @PostMapping("/create/{id}")
     public ResponseEntity<PlayList> createPlaylist(@PathVariable Long id, @RequestBody PlayList playList) {
-        Date date = new Date();
         playList.setUsers(userService.findById(id).get());
         playList.setName(playList.getName());
-        playList.setTimeCreate(String.valueOf(new Timestamp(date.getTime())));
         playlistService.save(playList);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -56,9 +56,8 @@ public class PlaylistController {
         if (!playLists.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        Date date = new Date();
         (playLists.get()).setName(playList.getName());
-        playList.setLastTimeEdit(String.valueOf(new Timestamp(date.getTime())));
+        playList.setLastTimeEdit(LocalDate.now(ZoneId.systemDefault()));
         playlistService.save(playLists.get());
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -85,7 +84,6 @@ public class PlaylistController {
     @DeleteMapping("/deletesong/{id}")
     public ResponseEntity<PlayList> deleteSongInPlaylist(@PathVariable Long id,@RequestBody Song song){
         Optional<Song> songs = songService.findById(id);
-
         playlistService.remove(songs.get().getId());
         return new ResponseEntity<>(HttpStatus.OK);
     }
