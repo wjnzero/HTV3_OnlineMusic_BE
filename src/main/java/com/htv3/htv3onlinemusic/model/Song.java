@@ -53,5 +53,15 @@ public class Song {
             inverseJoinColumns = {@JoinColumn(name = "type_id")})
     private Set<SongType> songTypes;
 
+    public Long getViewSong() {
+        return viewSong;
+    }
 
+    public void setViewSong(Long viewSong) {
+        this.viewSong = viewSong;
+    }
+
+    public int increment(){
+        return Math.toIntExact(viewSong++);
+    }
 }
