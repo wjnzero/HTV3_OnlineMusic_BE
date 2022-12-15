@@ -21,7 +21,11 @@ public class Song {
     private String describeSong;
     private String fileMp3;
     private String avatar;
-
+    private String timeCreate;
+    private String lastTimeEdit;
+    private String album;
+    @Value("0")
+    private Long viewSong;
     @OneToMany
     @JoinColumn(name = "song_id")
     private Set<Comment> comment;
@@ -48,8 +52,5 @@ public class Song {
             inverseJoinColumns = {@JoinColumn(name = "type_id")})
     private Set<SongType> songTypes;
 
-    private String album;
 
-    @Value("0")
-    private Long viewSong;
 }
