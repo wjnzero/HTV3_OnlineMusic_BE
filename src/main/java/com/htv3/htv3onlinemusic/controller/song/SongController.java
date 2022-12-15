@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Optional;
 
 @RestController
@@ -104,10 +103,19 @@ public class SongController {
 
     @GetMapping("/search/author")
     public ResponseEntity<Iterable<Song>> findSongByAuthorNameContaining(@RequestParam("author") String author){
-        return new ResponseEntity<>(songService.findSongByAuthorNameContaining(author), HttpStatus.OK);
+        return new ResponseEntity<>(songService.findSongByAuthorNameContaining("%"+author+"%"), HttpStatus.OK);
     }
     @GetMapping("/search/singer")
     public ResponseEntity<Iterable<Song>> findSongBySingerContaining(@RequestParam("singer") String singer){
-        return new ResponseEntity<>(songService.findSongBySingerContaining(singer), HttpStatus.OK);
+        return new ResponseEntity<>(songService.findSongBySingerContaining("%"+singer+"%"), HttpStatus.OK);
     }
+    @ModelAttribute("viewSong")
+    public Song setUpCounter() {
+        return new Song();
+    }
+//    @GetMapping("/view")
+//    public String get(@ModelAttribute("viewSong") Song viewSong) {
+//        viewSong.increment();
+//        return new ResponseEntity<>(songService.countSongByViewSong(viewSong.getId()), HttpStatus.OK);
+//    }
 }

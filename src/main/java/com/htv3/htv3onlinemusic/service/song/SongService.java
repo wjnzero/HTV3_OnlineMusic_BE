@@ -56,4 +56,9 @@ public class SongService implements ISongService {
     public Iterable<Song> findSongInPlaylist(Long id) {
         return songRepository.getSongInPlaylist(id);
     }
+
+//    @Override
+//    public Iterable<Song> countSongByViewSong(Long id){
+//        return songRepository.countSongByViewSong(id);
+//    }
 }

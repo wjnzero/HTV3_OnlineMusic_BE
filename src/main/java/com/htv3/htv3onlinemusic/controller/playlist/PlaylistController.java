@@ -92,6 +92,6 @@ public class PlaylistController {
     
     @GetMapping("/search")
     public ResponseEntity<Iterable<PlayList>> findByNamePlaylistContaining(@RequestParam("name") String name) {
-        return new ResponseEntity<>(playlistService.findByNamePlaylistContaining(name), HttpStatus.OK);
+    return new ResponseEntity<>(playlistService.findByNamePlaylistContaining(name), HttpStatus.OK);
     }
 }
