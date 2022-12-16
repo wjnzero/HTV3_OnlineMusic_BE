@@ -5,8 +5,6 @@ import com.htv3.htv3onlinemusic.model.dto.ISong;
 import com.htv3.htv3onlinemusic.service.GenericService;
 
 
-
-
 public interface ISongService extends GenericService<Song> {
 
     Iterable<Song> findSongByUser(Long id);
@@ -18,5 +16,10 @@ public interface ISongService extends GenericService<Song> {
 
     Iterable<Song> findSongBySingerContaining(String singer);
 
+//    Iterable<Song> countSongByViewSong(Long id);
+
     Iterable<Song> getSongNewest();
+    Iterable<Song> getSongSortByView();
+
+    void increaseViewSong(Long idSong);
 }

@@ -61,7 +61,22 @@ public class SongService implements ISongService {
     }
 
     @Override
+    public Iterable<Song> getSongSortByView() {
+        return songRepository.getSongSortByView();
+    }
+
+    @Override
+    public void increaseViewSong(Long idSong) {
+        songRepository.increaseViewSong(idSong);
+    }
+
+    @Override
     public Iterable<Song> findSongInPlaylist(Long id) {
         return songRepository.getSongInPlaylist(id);
     }
+
+//    @Override
+//    public Iterable<Song> countSongByViewSong(Long id){
+//        return songRepository.countSongByViewSong(id);
+//    }
 }

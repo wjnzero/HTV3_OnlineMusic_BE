@@ -22,10 +22,6 @@ public class PlayList {
     private LocalDate timeCreate;
     private LocalDate lastTimeEdit;
 
-    @OneToMany
-    @JoinColumn(name = "playlist_id")
-    private Set<Comment> comment;
-
 
     @Value("0")
     private Long viewPlaylist;

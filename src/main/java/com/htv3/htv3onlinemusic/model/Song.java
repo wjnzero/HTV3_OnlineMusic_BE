@@ -27,9 +27,6 @@ public class Song {
     private String album;
     @Value("0")
     private Long viewSong;
-    @OneToMany
-    @JoinColumn(name = "song_id")
-    private Set<Comment> comment;
 
     @OneToOne
     @JoinColumn(name = "author_id")
@@ -53,5 +50,15 @@ public class Song {
             inverseJoinColumns = {@JoinColumn(name = "type_id")})
     private Set<SongType> songTypes;
 
+    public Long getViewSong() {
+        return viewSong;
+    }
 
+    public void setViewSong(Long viewSong) {
+        this.viewSong = viewSong;
+    }
+
+    public int increment(){
+        return Math.toIntExact(viewSong++);
+    }
 }

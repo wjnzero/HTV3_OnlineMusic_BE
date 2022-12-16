@@ -13,5 +13,8 @@ public interface ICommentRepository extends JpaRepository<Comment, Long> {
     @Query(nativeQuery = true,value = "SELECT * FROM comment where song_id = :id")
     Iterable<Comment> getCommentBySongId(@Param("id") Long id);
 
+    @Query(nativeQuery = true,value = "SELECT * FROM comment where playlist_id = :id")
+    Iterable<Comment> getCommentByPlaylistId(@Param("id") Long id);
+
 
 }

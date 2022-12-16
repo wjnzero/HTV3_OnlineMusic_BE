@@ -52,13 +52,15 @@ public class PlaylistController {
 
     @PutMapping("/edit/{id}")
     public ResponseEntity<PlayList> updatePlaylist(@PathVariable Long id, @RequestBody PlayList playList) {
-        Optional<PlayList> playLists = playlistService.findById(id);
-        if (!playLists.isPresent()) {
+        Optional<PlayList> checkPlaylist = playlistService.findById(id);
+        if (!checkPlaylist.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        (playLists.get()).setName(playList.getName());
-        playList.setLastTimeEdit(LocalDate.now(ZoneId.systemDefault()));
-        playlistService.save(playLists.get());
+        Date date = new Date();
+        PlayList rs = checkPlaylist.orElse(null);
+        rs.setName(playList.getName());
+        rs.setLastTimeEdit(LocalDate.now(ZoneId.systemDefault()));
+        playlistService.save(rs);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -90,6 +92,6 @@ public class PlaylistController {
     
     @GetMapping("/search")
     public ResponseEntity<Iterable<PlayList>> findByNamePlaylistContaining(@RequestParam("name") String name) {
-        return new ResponseEntity<>(playlistService.findByNamePlaylistContaining(name), HttpStatus.OK);
+    return new ResponseEntity<>(playlistService.findByNamePlaylistContaining(name), HttpStatus.OK);
     }
 }
