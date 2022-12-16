@@ -25,4 +25,15 @@ public class CommentController {
         return new ResponseEntity<>(commentSong, HttpStatus.OK);
     }
 
+    @GetMapping("/playlist/{idPlaylist}")
+    public ResponseEntity<Iterable<Comment>> getAllCommentPlaylist(@PathVariable("idPlaylist") Long idPlaylist) {
+        return new ResponseEntity<>(commentService.getCommentByPlaylistId(idPlaylist), HttpStatus.OK);
+    }
+
+    @PostMapping("/playlist")
+    public ResponseEntity<Comment> createCommentPlaylist(@RequestBody Comment commentPlaylist) {
+        commentService.save(commentPlaylist);
+        return new ResponseEntity<>(commentPlaylist, HttpStatus.OK);
+    }
+
 }

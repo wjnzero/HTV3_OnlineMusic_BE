@@ -37,4 +37,9 @@ public class CommentService implements ICommentService {
     public Iterable<Comment> getCommentBySongId(Long id) {
         return ICommentRepository.getCommentBySongId(id);
     }
+
+    @Override
+    public Iterable<Comment> getCommentByPlaylistId(Long id) {
+        return ICommentRepository.getCommentByPlaylistId(id);
+    }
 }

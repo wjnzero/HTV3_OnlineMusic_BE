@@ -123,13 +123,19 @@ public class SongController {
     }
 
     @GetMapping("/newest")
-    public ResponseEntity<Iterable<Song>> getSevenSongNewest(){
+    public ResponseEntity<Iterable<Song>> getSongNewest(){
         return new ResponseEntity<>(songService.getSongNewest(), HttpStatus.OK);
     }
 
-//    @GetMapping("/view")
-//    public String get(@ModelAttribute("viewSong") Song viewSong) {
-//        viewSong.increment();
-//        return new ResponseEntity<>(songService.countSongByViewSong(viewSong.getId()), HttpStatus.OK);
-//    }
+    @GetMapping("/mostview")
+    public ResponseEntity<Iterable<Song>> getSongSortByView(){
+        return new ResponseEntity<>(songService.getSongSortByView(), HttpStatus.OK);
+    }
+
+
+    @GetMapping("/view/{idSong}")
+    public ResponseEntity<?> increaseViewSong(@PathVariable("idSong") Long idSong) {
+        songService.increaseViewSong(idSong);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

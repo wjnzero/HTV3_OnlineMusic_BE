@@ -20,5 +20,7 @@ public interface ISongService extends GenericService<Song> {
 //    Iterable<Song> countSongByViewSong(Long id);
 
     Iterable<Song> getSongNewest();
+    Iterable<Song> getSongSortByView();
 
+    void increaseViewSong(Long idSong);
 }
