@@ -46,7 +46,6 @@ public class PlaylistController {
     public ResponseEntity<PlayList> createPlaylist(@PathVariable Long id, @RequestBody PlayList playList) {
         playList.setUsers(userService.findById(id).get());
         playList.setName(playList.getName());
-        playList.setViewPlaylist(0L);
 //        playList.setLikePlaylist(0L);
         playList.setViewPlaylist(0L);
         playlistService.save(playList);

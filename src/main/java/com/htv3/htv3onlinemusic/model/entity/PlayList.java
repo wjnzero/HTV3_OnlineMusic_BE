@@ -21,6 +21,7 @@ public class PlayList {
     private String name;
     private LocalDate timeCreate;
     private LocalDate lastTimeEdit;
+    private String avatar;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_like", joinColumns = {@JoinColumn(name = "playlist_id")},
