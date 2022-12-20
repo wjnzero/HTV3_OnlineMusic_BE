@@ -1,7 +1,6 @@
 package com.htv3.htv3onlinemusic.repository;
 
-import com.htv3.htv3onlinemusic.model.Song;
-import com.htv3.htv3onlinemusic.model.dto.ISong;
+import com.htv3.htv3onlinemusic.model.entity.Song;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;

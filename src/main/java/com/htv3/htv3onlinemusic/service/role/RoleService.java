@@ -1,6 +1,6 @@
 package com.htv3.htv3onlinemusic.service.role;
 
-import com.htv3.htv3onlinemusic.model.Role;
+import com.htv3.htv3onlinemusic.model.entity.Role;
 import com.htv3.htv3onlinemusic.repository.IRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,6 @@
 package com.htv3.htv3onlinemusic.controller.userprofile;
 
-import com.htv3.htv3onlinemusic.model.Song;
-import com.htv3.htv3onlinemusic.model.User;
+import com.htv3.htv3onlinemusic.model.entity.User;
 import com.htv3.htv3onlinemusic.model.dto.CustomMess;
 import com.htv3.htv3onlinemusic.model.dto.RePass;
 import com.htv3.htv3onlinemusic.service.user.IUserService;

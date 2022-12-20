@@ -1,6 +1,6 @@
 package com.htv3.htv3onlinemusic.model.dto;
 
-import com.htv3.htv3onlinemusic.model.Role;
+import com.htv3.htv3onlinemusic.model.entity.Role;
 import lombok.Data;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

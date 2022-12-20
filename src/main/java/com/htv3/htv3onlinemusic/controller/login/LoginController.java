@@ -1,7 +1,7 @@
 package com.htv3.htv3onlinemusic.controller.login;
 
-import com.htv3.htv3onlinemusic.model.Role;
-import com.htv3.htv3onlinemusic.model.User;
+import com.htv3.htv3onlinemusic.model.entity.Role;
+import com.htv3.htv3onlinemusic.model.entity.User;
 import com.htv3.htv3onlinemusic.model.dto.JwtResponse;
 import com.htv3.htv3onlinemusic.model.dto.LoginForm;
 import com.htv3.htv3onlinemusic.service.jwt.JwtService;

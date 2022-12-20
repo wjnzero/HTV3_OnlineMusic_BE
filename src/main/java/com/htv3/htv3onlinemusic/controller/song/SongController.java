@@ -1,9 +1,7 @@
 package com.htv3.htv3onlinemusic.controller.song;
 
-import com.htv3.htv3onlinemusic.model.PlayList;
-import com.htv3.htv3onlinemusic.model.Song;
-import com.htv3.htv3onlinemusic.model.User;
-import com.htv3.htv3onlinemusic.model.dto.ISong;
+import com.htv3.htv3onlinemusic.model.entity.PlayList;
+import com.htv3.htv3onlinemusic.model.entity.Song;
 import com.htv3.htv3onlinemusic.service.playlist.IPlaylistService;
 import com.htv3.htv3onlinemusic.service.song.ISongService;
 import com.htv3.htv3onlinemusic.service.user.IUserService;
@@ -72,6 +70,7 @@ public class SongController {
             playListSet = song1.getPlayLists();
             playListSet.add(playList);
             song1.setPlayLists(playListSet);
+            song1.setViewSong(0L);
             songService.save(song1);
         } catch (Exception e) {
             e.printStackTrace();
