@@ -1,6 +1,6 @@
 package com.htv3.htv3onlinemusic.service.user;
 
-import com.htv3.htv3onlinemusic.model.entity.User;
+import com.htv3.htv3onlinemusic.model.User;
 import com.htv3.htv3onlinemusic.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

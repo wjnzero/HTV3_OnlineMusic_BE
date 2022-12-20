@@ -1,4 +1,4 @@
-package com.htv3.htv3onlinemusic.model.dto;
+package com.htv3.htv3onlinemusic.dto;
 
 import lombok.Data;
 

@@ -1,8 +1,8 @@
 package com.htv3.htv3onlinemusic.controller.userprofile;
 
-import com.htv3.htv3onlinemusic.model.entity.User;
-import com.htv3.htv3onlinemusic.model.dto.CustomMess;
-import com.htv3.htv3onlinemusic.model.dto.RePass;
+import com.htv3.htv3onlinemusic.model.User;
+import com.htv3.htv3onlinemusic.dto.CustomMess;
+import com.htv3.htv3onlinemusic.dto.RePass;
 import com.htv3.htv3onlinemusic.service.user.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
