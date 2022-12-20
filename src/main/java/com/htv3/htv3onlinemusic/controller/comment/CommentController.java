@@ -1,6 +1,6 @@
 package com.htv3.htv3onlinemusic.controller.comment;
 
-import com.htv3.htv3onlinemusic.model.Comment;
+import com.htv3.htv3onlinemusic.model.entity.Comment;
 import com.htv3.htv3onlinemusic.service.comment.ICommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

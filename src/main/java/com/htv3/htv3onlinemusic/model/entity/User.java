@@ -1,4 +1,4 @@
-package com.htv3.htv3onlinemusic.model;
+package com.htv3.htv3onlinemusic.model.entity;
 
 import lombok.*;
 

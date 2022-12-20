@@ -1,4 +1,5 @@
-package com.htv3.htv3onlinemusic.model;
+package com.htv3.htv3onlinemusic.model.entity;
+
 
 
 import lombok.AllArgsConstructor;
@@ -6,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+
 
 @Entity
 @Table
@@ -17,6 +20,9 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String comment_content;
+
+    private LocalDate dateCreate;
+
     @ManyToOne
     @JoinColumn(name = "user_id_comment")
     private User userComment;

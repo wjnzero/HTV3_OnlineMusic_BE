@@ -1,4 +1,4 @@
-package com.htv3.htv3onlinemusic.model;
+package com.htv3.htv3onlinemusic.model.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,6 +21,12 @@ public class PlayList {
     private String name;
     private LocalDate timeCreate;
     private LocalDate lastTimeEdit;
+    private String avatar;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_like", joinColumns = {@JoinColumn(name = "playlist_id")},
+            inverseJoinColumns = {@JoinColumn(name = "user_id")})
+    private Set<User> usersLike;
 
 
     @Value("0")
