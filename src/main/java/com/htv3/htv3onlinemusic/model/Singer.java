@@ -17,7 +17,7 @@ public class Singer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @OneToMany
-    @JoinColumn(name = "singer_id")
-    private Set<Comment> comment;
+//    @OneToMany
+//    @JoinColumn(name = "singer_id")
+//    private Set<Comment> comment;
 }
