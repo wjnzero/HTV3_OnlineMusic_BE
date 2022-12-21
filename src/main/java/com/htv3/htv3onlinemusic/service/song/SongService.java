@@ -1,6 +1,6 @@
 package com.htv3.htv3onlinemusic.service.song;
 
-import com.htv3.htv3onlinemusic.model.entity.Song;
+import com.htv3.htv3onlinemusic.model.Song;
 import com.htv3.htv3onlinemusic.repository.SongRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

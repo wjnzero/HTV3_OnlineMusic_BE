@@ -1,6 +1,6 @@
 package com.htv3.htv3onlinemusic.service.comment;
 
-import com.htv3.htv3onlinemusic.model.entity.Comment;
+import com.htv3.htv3onlinemusic.model.Comment;
 import com.htv3.htv3onlinemusic.repository.ICommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

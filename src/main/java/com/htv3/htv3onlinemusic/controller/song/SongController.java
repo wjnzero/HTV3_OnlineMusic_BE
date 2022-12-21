@@ -1,7 +1,7 @@
 package com.htv3.htv3onlinemusic.controller.song;
 
-import com.htv3.htv3onlinemusic.model.entity.PlayList;
-import com.htv3.htv3onlinemusic.model.entity.Song;
+import com.htv3.htv3onlinemusic.model.PlayList;
+import com.htv3.htv3onlinemusic.model.Song;
 import com.htv3.htv3onlinemusic.service.playlist.IPlaylistService;
 import com.htv3.htv3onlinemusic.service.song.ISongService;
 import com.htv3.htv3onlinemusic.service.user.IUserService;

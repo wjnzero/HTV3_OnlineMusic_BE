@@ -1,6 +1,6 @@
 package com.htv3.htv3onlinemusic.service.playlist;
 
-import com.htv3.htv3onlinemusic.model.entity.PlayList;
+import com.htv3.htv3onlinemusic.model.PlayList;
 import com.htv3.htv3onlinemusic.service.GenericService;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
