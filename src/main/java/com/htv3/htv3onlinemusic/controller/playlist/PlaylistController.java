@@ -144,7 +144,8 @@ public class PlaylistController {
     }
     @GetMapping("/mostlike")
     public ResponseEntity<Iterable<PlayList>> getPlaylistSortByLike(){
-        return new ResponseEntity<>(playlistService.getPlaylistSortByLike(), HttpStatus.OK);
+        Iterable<PlayList> playLists = playlistService.getPlaylistSortByLike();
+        return new ResponseEntity<>(playLists, HttpStatus.OK);
     }
     @GetMapping("/view/{idPlaylist}")
     public ResponseEntity<?> increaseViewPlaylist(@PathVariable("idPlaylist") Long idPlaylist) {
